@@ -55,7 +55,7 @@ if(isset($_SESSION['email']))
 		<div class="form-group">
 		  <label>Repeat Password:</label>
 		  <br>
-		<input class="form-control" type="password" name="password" placeholder="Repeat Password">
+		<input class="form-control" type="password" name="re_password" placeholder="Repeat Password">
 		</div>
 
 		<br>
@@ -73,34 +73,42 @@ if(isset($_SESSION['email']))
 	{
 		$email = $_POST["email"];
 		$password = $_POST["password"];
+		$re_password = $_POST["password"];
+		if($password == $re_password){
+			$password = strtoupper(hash('whirlpool', $password));
 
-		$password = strtoupper(hash('whirlpool', $password));
-		$firstname = $_POST["firstname"];
-		$lastname = $_POST["lastname"];
-		if(strlen($email) < 5 || strlen($password) < 5 || strlen($firstname) < 2 || strlen($lastname) < 2 || !strpos($email,'@'))
-		{
-			echo '<script type="text/javascript">alert("Emailul trebuie sa fie valid, mai mare de 5 caractere, iar parola trebuie sa fie mai mare de 5 caractere")</script>';
-			echo "<script>location.href = 'register.php'</script>";
-		}
-		else
-		{
-			include('Includere/connection.php');
-			$sql = "SELECT `email` FROM `users` WHERE `email`='$email'";
-			$datas = $dbh->query($sql);
-			$count = $datas->rowCount();
-			if ($count == 0)
+			$firstname = $_POST["firstname"];
+			$lastname = $_POST["lastname"];
+	
+			if(strlen($email) < 5 || strlen($password) < 5 || strlen($firstname) < 2 || strlen($lastname) < 2 || !strpos($email,'@'))
 			{
-				$sql = "INSERT INTO `users`(`email`, `password`, `firstname`, `lastname`) VALUES ('$email','$password','$firstname','$lastname')";
-				$datas = $dbh->query($sql);
-				echo '<script type="text/javascript">alert("Contul dumneavostra a fost creat cu succes.")</script>';
-				echo "<script>location.href = 'login.php'</script>";
+				echo '<script type="text/javascript">alert("E-mail must be valid and must have at least 5 characters. The password must contain at least 5 characters.")</script>';
+				echo "<script>location.href = 'register.php'</script>";
 			}
 			else
 			{
-				echo '<script type="text/javascript">alert("Exista deja un cont cu acest username.")</script>';
-				echo "<script>location.href = 'register.php'</script>";
+				include('Includere/connection.php');
+				$sql = "SELECT `email` FROM `users` WHERE `email`='$email'";
+				$datas = $dbh->query($sql);
+				$count = $datas->rowCount();
+				if ($count == 0)
+				{
+					$sql = "INSERT INTO `users`(`email`, `password`, `first_name`, `last_name`, `isAdmin`) VALUES ('$email','$password','$firstname','$lastname', 0)";
+					$datas = $dbh->query($sql);
+					echo '<script type="text/javascript">alert("Account was succesfully created!")</script>';
+					echo "<script>location.href = 'login.php'</script>";
+				}
+				else
+				{
+					echo '<script type="text/javascript">alert("An account with this name already exists")</script>';
+					echo "<script>location.href = 'register.php'</script>";
+				}
+				$dbh = null;
 			}
-			$dbh = null;
+		}
+		else{
+			echo '<script type="text/javascript">alert("Passwords must match.")</script>';
+			echo "<script>location.href = 'register.php'</script>";
 		}
 	}
   ?>
