@@ -71,15 +71,12 @@ if(isset($_SESSION['email']))
 <?php
 	if ($_SERVER["REQUEST_METHOD"] == "POST")
 	{
+		$firstname = $_POST["firstname"];
+		$lastname = $_POST["lastname"];
 		$email = $_POST["email"];
 		$password = $_POST["password"];
-		$re_password = $_POST["password"];
-		if($password == $re_password){
-			$password = strtoupper(hash('whirlpool', $password));
-
-			$firstname = $_POST["firstname"];
-			$lastname = $_POST["lastname"];
-	
+		$re_password = $_POST["re_password"];
+		if($password == $re_password){	
 			if(strlen($email) < 5 || strlen($password) < 5 || strlen($firstname) < 2 || strlen($lastname) < 2 || !strpos($email,'@'))
 			{
 				echo '<script type="text/javascript">alert("E-mail must be valid and must have at least 5 characters. The password must contain at least 5 characters.")</script>';
@@ -88,19 +85,35 @@ if(isset($_SESSION['email']))
 			else
 			{
 				include('Includere/connection.php');
-				$sql = "SELECT `email` FROM `users` WHERE `email`='$email'";
-				$datas = $dbh->query($sql);
-				$count = $datas->rowCount();
+				$stmt = $dbh->prepare("SELECT `email` FROM `users` WHERE `email`=:email");
+				$stmt->bindParam(':email', $email);
+				$email = $_POST["email"];
+				$stmt->execute();
+				$count = $stmt->rowCount();
 				if ($count == 0)
 				{
-					$sql = "INSERT INTO `users`(`email`, `password`, `first_name`, `last_name`, `isAdmin`) VALUES ('$email','$password','$firstname','$lastname', 0)";
-					$datas = $dbh->query($sql);
+					$stmt =  $dbh->prepare("INSERT INTO `users` (email, password, first_name, last_name, isAdmin) VALUES (:email, :password, :first_name, :last_name, :isAdmin)");
+
+					$stmt->bindParam(':email', $email);
+					$stmt->bindParam(':password', $password);
+					$stmt->bindParam(':first_name', $firstname);
+					$stmt->bindParam(':last_name', $lastname);
+					$stmt->bindParam(':isAdmin', $isAdmin);
+					$isAdmin = 0;
+					$email = $_POST["email"];
+					$password = $_POST["password"];
+					$password = strtoupper(hash('whirlpool', $password));
+					$firstname = $_POST["firstname"];
+					$lastname = $_POST["lastname"];
+
+					$stmt->execute();
+
 					echo '<script type="text/javascript">alert("Account was succesfully created!")</script>';
 					echo "<script>location.href = 'login.php'</script>";
 				}
 				else
 				{
-					echo '<script type="text/javascript">alert("An account with this name already exists")</script>';
+					echo '<script type="text/javascript">alert("An account with this email already exists")</script>';
 					echo "<script>location.href = 'register.php'</script>";
 				}
 				$dbh = null;

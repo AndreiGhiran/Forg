@@ -22,10 +22,10 @@
             <h2>All one place.</h2>
        </div>
        <div class="buttons">
-            <a href="#"><button class="main_button">
-                SEARCH RECIPE
+            <a href="search.php"><button class="main_button">
+                SEARCH FOOD
             </button></a>
-            <a href="#"><button class="second_button">
+            <a href="register.php"><button class="second_button">
                 CREATE ACCOUNT
             </button></a>
        </div>

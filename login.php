@@ -53,13 +53,19 @@ if(isset($_SESSION['email']))
 <?php
 	if ($_SERVER["REQUEST_METHOD"] == "POST")
 	{
+		include('Includere/connection.php');
+		$stmt = $dbh->prepare("SELECT * FROM `users` WHERE `email` = :email AND `password` = :password");
+
+		$stmt->bindParam(':email', $email);
+		$stmt->bindParam(':password', $password);
+
 		$email = $_POST["email"];
 		$password = $_POST["password"];
 		$password = strtoupper(hash('whirlpool', $password));
-		include('Includere/connection.php');
-		$sql = "SELECT * FROM `users` WHERE `email`='$email' AND `password`='$password'";
-		$datas = $dbh->query($sql);
-		$count = $datas->rowCount();
+
+		$stmt->execute();
+
+		$count = $stmt->rowCount();
 		if ($count == 1)
 		{
 			$_SESSION['email']=$email;
