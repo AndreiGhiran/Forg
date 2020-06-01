@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="stylesheets/nav_bar.css" rel="stylesheet">
     <title>FoodOrg Home</title>
-    <link href="nav_bar.css" rel="stylesheet">
 </head>
 <body>
     <nav>
@@ -14,7 +14,7 @@
             </div>
             <ul class="nav_links">
                 <li>
-                    <a href="#">Search</a>
+                    <a href="search.php">Search</a>
                 </li>
                 <li>
                     <a href="#">Checklist</a>

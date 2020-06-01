@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FoodOrg Home</title>
-    <link href="search.css" rel="stylesheet">
-    <link href="nav_bar.css" rel="stylesheet">
+    <link href="stylesheets/search.css" rel="stylesheet">
+    <link href="stylesheets/nav_bar.css" rel="stylesheet">
 </head>
 <body>
     <?php
@@ -18,7 +18,7 @@
        </div>
        <form action="search_process.php" method ="GET" class="radio">
            <p class="main_search">Searh recipe</p>
-           
+
            <input type="text" class="main_textbox" id="recipe_input">
 
            <div class="filters_container">
@@ -56,7 +56,7 @@
                         <input type="text" id="textInput" value="10" class="small_value">
                     </div>
                 </div>
-                
+
                 <div class="filter">
                     <p class="filter_name">Season</p>
                     <div class="label_choice">
@@ -101,20 +101,20 @@
                     <p class="filter_name">Ingredient filter</p>
                     <input type="text" class="small_textbox" id="ingredient_input">
                 </div>
-                
+
                 <div class="filter">
                     <p class="filter_name">Allergens</p>
                     <input type="text" class="small_textbox" id="allergen_input">
                 </div>
 
            </div>
-           
+
        </form>
     </main>
     <script>
     function updateTextInput(val) {
-          document.getElementById('textInput').value=val; 
-        }                        
+          document.getElementById('textInput').value=val;
+        }
     </script>
 </body>
 </html>

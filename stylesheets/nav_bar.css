@@ -19,7 +19,7 @@ nav {
     display: flex;
     justify-content: space-around;
 }
-.nav_links li, a {
+.nav_links li, .nav_links a {
     padding: 8px;
     font-family: 'Raleway', sans-serif;
     font-size: 20px;

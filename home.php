@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FoodOrg Home</title>
-    <link href="home.css" rel="stylesheet">
+    <link href="stylesheets/home.css" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -30,6 +30,6 @@
             </button></a>
        </div>
     </main>
-   
+
 </body>
 </html>
