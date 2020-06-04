@@ -13,14 +13,17 @@
     ?>
 
     <main>
-        <div class="logo-big">
+        <div class="logo_big">
             <img src="img/Logo_medium.svg" alt="Big Nice Logo">
        </div>
        <form action="search_process.php" method ="GET" class="radio">
-           <p class="main_search">Searh recipe</p>
+           <div class="search_div">
+                <p class="main_search">Searh food products</p>
 
-           <input type="text" class="main_textbox" id="recipe_input">
-
+                <input type="text" class="main_textbox" id="recipe_input">
+                    <input type="submit" class="submit" value="Search">
+           </div>
+           
            <div class="filters_container">
                <div class="filter">
                     <p class="filter_name">Category</p>
@@ -29,20 +32,20 @@
                         <label for="all">All</label>
                     </div>
                     <div class="label_choice">
-                        <input type="radio" id="breakfast" name="category" value="breakfast">
-                        <label for="breakfast">Breakfast</label>
+                        <input type="radio" id="base_food" name="category" value="base_food">
+                        <label for="base_food">Base food</label>
                     </div>
                     <div class="label_choice">
-                        <input type="radio" id="lunch" name="category" value="lunch">
-                        <label for="lunch">Lunch</label>
+                        <input type="radio" id="fruit" name="category" value="fruit">
+                        <label for="fruit">Fruit</label>
                     </div>
                     <div class="label_choice">
-                        <input type="radio" id="dinner" name="category" value="dinner">
-                        <label for="dinner">Dinner</label>
+                        <input type="radio" id="vegetable" name="category" value="vegetable">
+                        <label for="vegetable">Vegetable</label>
                     </div>
                     <div class="label_choice">
-                        <input type="radio" id="dessert" name="category" value="dessert">
-                        <label for="dessert">Dessert</label>
+                        <input type="radio" id="meat" name="category" value="meat">
+                        <label for="meat">Meat</label>
                     </div>
                </div>
 
@@ -104,7 +107,23 @@
 
                 <div class="filter">
                     <p class="filter_name">Allergens</p>
-                    <input type="text" class="small_textbox" id="allergen_input">
+
+                    <select name="allergens" id="allergens">
+                        <option value="none" selected="selected">None</option>
+                        <?php 
+                            $connection = mysqli_connect("localhost", "root", "", "forg");
+                            if (!$connection) {
+                                die("Connection failed: " . mysqli_connect_error());
+                              }
+                            $query = "SELECT name FROM allergens";
+                            $result = mysqli_query($connection, $query);
+                            if (mysqli_num_rows($result) > 0) {
+                                while($row = mysqli_fetch_array($result)) {
+                                    echo "<option value=\"".$row['name']."\">" .ucfirst($row['name'])."</option>";
+                                }
+                            }
+                        ?>
+                    </select>
                 </div>
 
            </div>

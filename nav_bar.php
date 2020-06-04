@@ -9,8 +9,9 @@
 <body>
     <nav>
         <div class="nav_bar">
-            <div class="logo">
-                <a href="home.php"><img src="img/Logo.svg" alt="Nice Logo"></a>
+            <div>
+                <a href="home.php" class="small_logo"><img src="img/Logo_small.svg" alt="Nice Logo"></a>
+                <a href="home.php" class="logo"><img src="img/Logo.svg" alt="Nice Logo"></a>
             </div>
             <ul class="nav_links">
                 <li>
@@ -24,6 +25,21 @@
                 </li>
                 <li>
                     <a href="login.php">Login</a>
+                </li>
+                
+            </ul>
+            <ul class="phone_links">
+                <li>
+                    <a href="search.php"><img src="img/Search.svg" alt="Search"></a>
+                </li>
+                <li>
+                    <a href="#"><img src="img/Checklist.svg" alt="Checklist"></a>
+                </li>
+                <li>
+                    <a href="#"><img src="img/Statistics.svg" alt="Statistics"></a>
+                </li>
+                <li>
+                    <a href="#"><img src="img/Profile.svg" alt="Profile"></a>
                 </li>
             </ul>
         </div>
