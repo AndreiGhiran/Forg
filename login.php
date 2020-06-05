@@ -69,6 +69,8 @@ if(isset($_SESSION['email']))
 		if ($count == 1)
 		{
 			$_SESSION['email']=$email;
+			$_SESSION['name']=$stmt->fetch()['first_name'];
+			
 			echo "<script>location.href = 'home.php'</script>";
 		}
 		else

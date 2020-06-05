@@ -1,9 +1,12 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FoodOrg Home</title>
+    <title>FoodOrg Search</title>
     <link href="stylesheets/search.css" rel="stylesheet">
     <link href="stylesheets/nav_bar.css" rel="stylesheet">
 </head>
@@ -31,22 +34,23 @@
                         <input type="radio" id="all" name="category" value="all" checked>
                         <label for="all">All</label>
                     </div>
-                    <div class="label_choice">
-                        <input type="radio" id="base_food" name="category" value="base_food">
-                        <label for="base_food">Base food</label>
-                    </div>
-                    <div class="label_choice">
-                        <input type="radio" id="fruit" name="category" value="fruit">
-                        <label for="fruit">Fruit</label>
-                    </div>
-                    <div class="label_choice">
-                        <input type="radio" id="vegetable" name="category" value="vegetable">
-                        <label for="vegetable">Vegetable</label>
-                    </div>
-                    <div class="label_choice">
-                        <input type="radio" id="meat" name="category" value="meat">
-                        <label for="meat">Meat</label>
-                    </div>
+                    <?php 
+                            $connection = mysqli_connect("localhost", "root", "", "forg");
+                            if (!$connection) {
+                                die("Connection failed: " . mysqli_connect_error());
+                              }
+                            $query = "SELECT DISTINCT category FROM PRODUCES where category != 'All'";
+                            $result = mysqli_query($connection, $query);
+                            if (mysqli_num_rows($result) > 0) {
+                                while($row = mysqli_fetch_array($result)) {
+                                    
+                                    echo '<div class="label_choice">
+                                    <input type="radio" id="'. strtolower($row['category']) .'" name="category" value="'. strtolower($row['category']) .'">
+                                    <label for="winter">'. $row['category'] .'</label>
+                                    </div>';
+                                }
+                            }
+                        ?>
                </div>
 
                 <div class="filter">
@@ -106,20 +110,25 @@
                 </div>
 
                 <div class="filter">
-                    <p class="filter_name">Allergens</p>
-
-                    <select name="allergens" id="allergens">
-                        <option value="none" selected="selected">None</option>
+                    <p class="filter_name">Alergens</p>
+                        <div class="label_choice">
+                            <input type="radio" id="all" name="alergens" value="all" checked>
+                            <label for="all">None</label>
+                        </div>
                         <?php 
                             $connection = mysqli_connect("localhost", "root", "", "forg");
                             if (!$connection) {
                                 die("Connection failed: " . mysqli_connect_error());
                               }
-                            $query = "SELECT name FROM allergens";
+                            $query = "SELECT DISTINCT name FROM allergens";
                             $result = mysqli_query($connection, $query);
                             if (mysqli_num_rows($result) > 0) {
                                 while($row = mysqli_fetch_array($result)) {
-                                    echo "<option value=\"".$row['name']."\">" .ucfirst($row['name'])."</option>";
+                                    
+                                    echo '<div class="label_choice">
+                                    <input type="radio" id="'. strtolower($row['name']) .'" name="alergen" value="'. strtolower($row['name']) .'">
+                                    <label for="winter">'. $row['name'] .'</label>
+                                    </div>';
                                 }
                             }
                         ?>

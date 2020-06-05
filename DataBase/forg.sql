@@ -50,10 +50,11 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `isAd
 
 
 INSERT INTO `produces` (`id`, `name`, `price`, `season`, `category`, `diet`, `perisability`) VALUES
-(1, 'apple', 4.50, 'fall', 'fruit', 'vegan', 'very_perisable'),
-(2, 'popato', 3.50, 'fall', 'vegetable',  'vegan', 'perisable'),
-(3, 'whole_chicken', 7.50, 'all', 'meat', 'gluten-free', 'perisable'),
-(4, 'butter', 4.55, 'all', 'base_food', 'gluten-free', 'hardly_perrisable');
+(1, 'apple', 4.50, 'fall', 'Fruit', 'Vegan', 'Very Perisable'),
+(2, 'popato', 3.50, 'fall', 'Vegetable',  'Vegan', 'Perisable'),
+(3, 'whole_chicken', 7.50, 'All', 'Meat', 'Gluten-free', 'Perisable'),
+(4, 'butter', 4.55, 'all', 'Diary', 'Bluten-free', 'Hardly Perrisable'),
+(5, 'bread' , 2.99, 'all', 'Backery', 'All', 'Perrisable');
 
 INSERT INTO `shoping_lists` (`user_id`, `produce_id`, `quantity`) VALUES
 (1,1,10),
@@ -63,13 +64,14 @@ INSERT INTO `shoping_lists` (`user_id`, `produce_id`, `quantity`) VALUES
 (1,3,1);
 
 INSERT INTO `statistics` (`produce_id`, `popularity`) VALUES
-(1,0),
-(2,0),
+(1,2),
+(2,1),
 (3,0);
 
 INSERT INTO `allergens` ( `name`, `produce_id`) VALUES
-('poultry',3),
-('lactose',4);
+('Poultry',3),
+('Gluten', 5),
+('Lactose',4);
 
 
 ALTER TABLE `users`
@@ -85,6 +87,8 @@ ALTER TABLE `produces`
 
   ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  ALTER TABLE `produces`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
   
   
