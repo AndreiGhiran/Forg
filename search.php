@@ -31,8 +31,8 @@ session_start();
                <div class="filter">
                     <p class="filter_name">Category</p>
                     <div class="label_choice">
-                        <input type="radio" id="all" name="category" value="all" checked>
-                        <label for="all">All</label>
+                        <input type="radio" id="category_all" name="category" value="category_all" checked>
+                        <label for="category_all">All</label>
                     </div>
                     <?php 
                             $connection = mysqli_connect("localhost", "root", "", "forg");
@@ -46,7 +46,7 @@ session_start();
                                     
                                     echo '<div class="label_choice">
                                     <input type="radio" id="'. strtolower($row['category']) .'" name="category" value="'. strtolower($row['category']) .'">
-                                    <label for="winter">'. strtr(ucfirst($row['category']),"_", " ") .'</label>
+                                    <label for="'. strtolower($row['category']) .'">'. strtr(ucfirst($row['category']),"_", " ") .'</label>
                                     </div>';
                                 }
                             }
@@ -67,8 +67,8 @@ session_start();
                 <div class="filter">
                     <p class="filter_name">Season</p>
                     <div class="label_choice">
-                        <input type="radio" id="all" name="season" value="all" checked>
-                        <label for="all">All</label>
+                        <input type="radio" id="season_all" name="season" value="season_all" checked>
+                        <label for="season_all">All</label>
                     </div>
                     <div class="label_choice">
                         <input type="radio" id="winter" name="season" value="winter">
@@ -91,8 +91,8 @@ session_start();
                 <div class="filter">
                     <p class="filter_name">Diet</p>
                     <div class="label_choice">
-                        <input type="radio" id="none" name="diet" value="none" checked>
-                        <label for="none">None</label>
+                        <input type="radio" id="diet_none" name="diet" value="diet_none" checked>
+                        <label for="diet_none">None</label>
                     </div>
                     <div class="label_choice">
                         <input type="radio" id="gluten-free" name="diet" value="gluten-free">
@@ -112,22 +112,22 @@ session_start();
                 <div class="filter">
                     <p class="filter_name">Alergens</p>
                         <div class="label_choice">
-                            <input type="radio" id="all" name="alergens" value="all" checked>
-                            <label for="all">None</label>
+                            <input type="radio" id="alergens_all" name="alergens" value="alergens_all" checked>
+                            <label for="alergens_all">None</label>
                         </div>
                         <?php 
                             $connection = mysqli_connect("localhost", "root", "", "forg");
                             if (!$connection) {
                                 die("Connection failed: " . mysqli_connect_error());
                               }
-                            $query = "SELECT DISTINCT name FROM allergens";
+                            $query = "SELECT DISTINCT name FROM allergens;";
                             $result = mysqli_query($connection, $query);
                             if (mysqli_num_rows($result) > 0) {
                                 while($row = mysqli_fetch_array($result)) {
                                     
                                     echo '<div class="label_choice">
-                                    <input type="radio" id="'. strtolower($row['name']) .'" name="alergen" value="'. strtolower($row['name']) .'">
-                                    <label for="winter">'. ucfirst($row['name']) .'</label>
+                                    <input type="radio" id="'. strtolower($row['name']) .'" name="alergens" value="'. strtolower($row['name']) .'">
+                                    <label for="'. strtolower($row['name']) .'">'. ucfirst($row['name']) .'</label>
                                     </div>';
                                 }
                             }

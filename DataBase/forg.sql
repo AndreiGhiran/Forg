@@ -21,18 +21,14 @@ CREATE TABLE `products` (
   `season` varchar(100) NOT NULL,
   `category` varchar(200) NOT NULL,
   `diet` varchar(200) NOT NULL,
-  `perishability` varchar(200) NOT NULL
+  `perishability` varchar(200) NOT NULL,
+  `popularity` int(100) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `shoping_lists` (
     `user_id` int(11) NOT NULL,
     `product_id` int(11) NOT NULL,
     `quantity` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-CREATE TABLE `statistics`(
-    `product_id` int(11) NOT NULL,
-    `popularity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `allergens`(
@@ -64,23 +60,16 @@ INSERT INTO `shoping_lists` (`user_id`, `product_id`, `quantity`) VALUES
 (3,2,10),
 (1,3,1);
 
-INSERT INTO `statistics` (`product_id`, `popularity`) VALUES
-(1,0),
-(2,0),
-(3,0);
-
 INSERT INTO `allergens` ( `name`, `product_id`) VALUES
 ('poultry',3),
-('lactose',4);
+('lactose',4),
+('gluten',5);
 
 
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`);
 
-
-ALTER TABLE `statistics`
-  ADD PRIMARY KEY (`product_id`);
 
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);

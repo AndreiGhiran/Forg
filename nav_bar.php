@@ -28,13 +28,8 @@
                 if(isset($_SESSION['email']))
                 {
                     echo '<li>
-                            <a href="#">'. $_SESSION['name'] . "'s Profile</a>
-                            </li>";
-                    echo '<li>
                             <a href="logout.php">Logout</a>
                             </li>';
-                            
-                    
                 }
                 else{
                     echo '<li>
