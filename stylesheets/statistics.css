@@ -7,11 +7,14 @@ main {
     justify-content: space-around;
     align-items: center;
 }
+
 .headlines {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 50%;
 }
+
 h1 {
     font-family: 'Raleway', sans-serif;
     letter-spacing: 0.48px;
@@ -20,50 +23,46 @@ h1 {
     padding-left: 2em;
     padding-right: 2em;
 }
-h2 {
+
+table {
     font-family: 'Raleway', sans-serif;
-    letter-spacing: 0.48px;
     color: #7A2B0C;
-    opacity: 0.7;
-}
-.buttons {
-    width: 50%;
-    display: flex;
-    justify-content: space-around;
-    
-}
-.main_button {
-    background-color: #FAEBD7;
-    padding: 20px;
-    padding-left: 70px;
-    padding-right: 70px;
-    border: 2px solid #CC908A;
-    border-radius: 60px;
-    font-family: 'Raleway', sans-serif;
-    font-weight: bold;
-    color: #9F5233;
-    cursor: pointer;
+    table-layout: fixed;
+    border-collapse: separate;
+    border: 10px solid #7A2B0C;
+    border-radius: 15px;
+  }
+  
+th, td {
+padding: 20px;
+border: 0px;
+
 }
 
-.second_button {
-    background-color: #FFF7EB;
-    padding: 20px;
-    padding-left: 70px;
-    padding-right: 70px;
-    border: 2px solid #CC908A;
-    border-radius: 60px;
-    font-family: 'Raleway', sans-serif;
-    font-weight: bold;
-    color: #9F5233;
-    cursor: pointer;
+td:nth-child(2){
+    text-align: end;
 }
-.main_button:hover {
-    background-color: #fdd6d3;
+
+tr{
+    border: 0px;
 }
-.second_button:hover {
-    background-color: #fdd6d3;
+
+tr:first-child{
+    background-color: #CC908A;
 }
+
+tr:nth-child(even){
+    border: 0px;
+    background-color: #FAEBD7;
+}
+
+
 @media only screen and (max-width: 850px) {
+    .headlines {
+        
+        width: 100%;
+    }  
+
     h1 {
         font-size: 20px;
     }

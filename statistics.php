@@ -21,18 +21,31 @@ session_start();
             <h1>Most Popular Items</h1>
             <table style="width:100%" class = "statistics_table">
                 <tr>
-                    <th>Produce</th>
-                    <th>Times it was added to someones list</th>
+                    <th>Product</th>
+                    <th>Popularity</th>
                 </tr>
                 <?php
                 include('Includere/connection.php');
-                $stmt = $dbh->prepare("SELECT * FROM `statistics`;");
+                $stmt = $dbh->prepare("SELECT name, popularity FROM `products` order by popularity;");
                 $stmt->execute();
                 while ($row = $stmt->fetch()) {
-                    echo '<tr>
-                            <td>' . $row['produce_id'] . '</td>
-                            <td>'.$row['popularity'].'</td>
-                        </tr>';
+                        if(count(explode("_", $row['name'])) > 1){
+                            echo '<tr>
+                                <td>';
+                            $words = explode("_", $row['name']);
+                            for ($i = 0; $i< count($words)-1;$i++){
+                                echo  ucfirst($words[$i]) . " ";
+                            }
+                            echo ucfirst($words[count($words)-1]) . "</td> 
+                                <td>".$row['popularity']."</td>
+                            </tr>";
+                        }
+                        else{
+                            echo '<tr>
+                                <td>' .  ucfirst($row['name']) . '</td>
+                                <td>'.$row['popularity'].'</td>
+                            </tr>';
+                        }
                   }
                 ?>
             </table> 
