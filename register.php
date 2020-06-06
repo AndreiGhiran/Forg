@@ -25,12 +25,7 @@ if(isset($_SESSION['email']))
 		<h1>Register</h1>
 		<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
-		<div class="form-group">
-		<label>Email:</label>
-		<br>
-		<input class="form-control" type="text" name="email" placeholder="Email">
 
-		</div>
 		<div class="form-group">
 		<label>First Name:</label>
 		<br>
@@ -47,6 +42,13 @@ if(isset($_SESSION['email']))
 		</div>
 
 		<div class="form-group">
+		<label>Email:</label>
+		<br>
+		<input class="form-control" type="text" name="email" placeholder="Email">
+
+		</div>
+
+		<div class="form-group">
 		  <label>Password:</label>
 		  <br>
 		<input class="form-control" type="password" name="password" placeholder="Password">
@@ -56,6 +58,14 @@ if(isset($_SESSION['email']))
 		  <label>Repeat Password:</label>
 		  <br>
 		<input class="form-control" type="password" name="re_password" placeholder="Repeat Password">
+		</div>
+
+		<div class="filter">
+			<label class="filter_name">Admin?</label>
+			<div class="label_choice">
+				<input type="checkbox" id="admin" name="admin" value= 1 >
+				<label for="admin">Yes</label>
+			</div>
 		</div>
 
 		<br>
@@ -76,10 +86,11 @@ if(isset($_SESSION['email']))
 		$email = $_POST["email"];
 		$password = $_POST["password"];
 		$re_password = $_POST["re_password"];
+		
 		if($password == $re_password){	
 			if(strlen($email) < 5 || strlen($password) < 5 || strlen($firstname) < 2 || strlen($lastname) < 2 || !strpos($email,'@'))
 			{
-				echo '<script type="text/javascript">alert("E-mail must be valid and must have at least 5 characters. The password must contain at least 5 characters.")</script>';
+				echo '<script type="text/javascript">alert("E-mail must be valid and must have at least 5 characters.  The password must contain at least 5 characters.")</script>';
 				echo "<script>location.href = 'register.php'</script>";
 			}
 			else
@@ -98,8 +109,13 @@ if(isset($_SESSION['email']))
 					$stmt->bindParam(':password', $password);
 					$stmt->bindParam(':first_name', $firstname);
 					$stmt->bindParam(':last_name', $lastname);
-					$stmt->bindParam(':isAdmin', $isAdmin);
-					$isAdmin = 0;
+					$stmt->bindParam(':isAdmin', $is_admin);
+
+					$is_admin = $_POST["admin"];
+					if($is_admin != 1){
+						$is_admin = 0;
+					}
+					
 					$email = $_POST["email"];
 					$password = $_POST["password"];
 					$password = strtoupper(hash('whirlpool', $password));
