@@ -1,11 +1,9 @@
-DROP TABLE `users`;
-DROP TABLE `products`;
-DROP TABLE `produces`;
-DROP TABLE `shoping_lists`;
-DROP TABLE `statistics`;
-DROP TABLE `allergens`;
-
-
+DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS `products`;
+DROP TABLE IF EXISTS `produces`;
+DROP TABLE IF EXISTS `shoping_lists`;
+DROP TABLE IF EXISTS `statistics`;
+DROP TABLE IF EXISTS `allergens`;
 
 CREATE TABLE users (
   `id` int(11) NOT NULL,
