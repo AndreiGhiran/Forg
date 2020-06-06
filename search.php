@@ -39,14 +39,14 @@ session_start();
                             if (!$connection) {
                                 die("Connection failed: " . mysqli_connect_error());
                               }
-                            $query = "SELECT DISTINCT category FROM PRODUCES where category != 'All'";
+                            $query = "SELECT DISTINCT category FROM PRODUCTS where category != 'All'";
                             $result = mysqli_query($connection, $query);
                             if (mysqli_num_rows($result) > 0) {
                                 while($row = mysqli_fetch_array($result)) {
                                     
                                     echo '<div class="label_choice">
                                     <input type="radio" id="'. strtolower($row['category']) .'" name="category" value="'. strtolower($row['category']) .'">
-                                    <label for="winter">'. $row['category'] .'</label>
+                                    <label for="winter">'. strtr(ucfirst($row['category']),"_", " ") .'</label>
                                     </div>';
                                 }
                             }
@@ -91,8 +91,8 @@ session_start();
                 <div class="filter">
                     <p class="filter_name">Diet</p>
                     <div class="label_choice">
-                        <input type="radio" id="all" name="diet" value="all" checked>
-                        <label for="all">All</label>
+                        <input type="radio" id="none" name="diet" value="none" checked>
+                        <label for="none">None</label>
                     </div>
                     <div class="label_choice">
                         <input type="radio" id="gluten-free" name="diet" value="gluten-free">
@@ -127,7 +127,7 @@ session_start();
                                     
                                     echo '<div class="label_choice">
                                     <input type="radio" id="'. strtolower($row['name']) .'" name="alergen" value="'. strtolower($row['name']) .'">
-                                    <label for="winter">'. $row['name'] .'</label>
+                                    <label for="winter">'. ucfirst($row['name']) .'</label>
                                     </div>';
                                 }
                             }
