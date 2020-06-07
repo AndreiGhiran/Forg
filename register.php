@@ -112,9 +112,11 @@ if(isset($_SESSION['email']))
 					$stmt->bindParam(':isAdmin', $is_admin);
 
 					$is_admin = $_POST["admin"];
-					if($is_admin != 1){
-						$is_admin = 0;
+					if(isset($_POST["admin"])){
+						$is_admin = $_POST["admin"];
 					}
+					else
+						$is_admin = 0;
 					
 					$email = $_POST["email"];
 					$password = $_POST["password"];

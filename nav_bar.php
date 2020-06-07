@@ -19,7 +19,7 @@
                     <a href="search.php">Search</a>
                 </li>
                 <li>
-                    <a href="#">Checklist</a>
+                    <a href="shoping_list.php">Checklist</a>
                 </li>
                 <li>
                     <a href="statistics.php">Statistics</a>

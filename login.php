@@ -13,8 +13,6 @@ if(isset($_SESSION['email']))
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel='stylesheet', href='stylesheets/login.css'>
-		<!-- <link rel='stylesheet', href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800&display=swap'> -->
-		<!-- <link rel='stylesheet', href='https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap" rel="stylesheet'> -->
 	</head>
 	<body>
 
