@@ -19,7 +19,7 @@
                     <a href="search.php">Search</a>
                 </li>
                 <li>
-                    <a href="shoping_list.php">Checklist</a>
+                    <a href="shoping_list.php">Shopping List</a>
                 </li>
                 <li>
                     <a href="statistics.php">Statistics</a>
@@ -34,7 +34,7 @@
                 else{
                     echo '<li>
                     <a href="login.php">Login</a>
-                </li>';
+                    </li>';
                 }
                 ?>
                 
@@ -45,14 +45,24 @@
                     <a href="search.php"><img src="img/Search.svg" alt="Search"></a>
                 </li>
                 <li>
-                    <a href="#"><img src="img/Checklist.svg" alt="Checklist"></a>
+                    <a href="#"><img src="img/Shopping_List.svg" alt="Shopping List"></a>
                 </li>
                 <li>
                     <a href="#"><img src="img/Statistics.svg" alt="Statistics"></a>
                 </li>
-                <li>
-                    <a href="#"><img src="img/Profile.svg" alt="Profile"></a>
-                </li>
+                <?php
+                if(isset($_SESSION['email']))
+                {
+                    echo '<li>
+                            <a href="logout.php"><img src="img/Logout.svg" alt="Profile"></a>
+                            </li>';
+                }
+                else{
+                    echo '<li>
+                    <a href="login.php"><img src="img/Login.svg" alt="Profile"></a>
+                    </li>';
+                }
+                ?>
             </ul>
         </div>
     </nav>

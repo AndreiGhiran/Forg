@@ -23,7 +23,7 @@ session_start();
            <div class="search_div">
                 <p class="main_search">Searh food products</p>
 
-                <input type="text" class="main_textbox" id="recipe_input">
+                <input type="text" name="name" class="main_textbox" id="recipe_input">
                     <input type="submit" class="submit" value="Search">
            </div>
            
@@ -31,7 +31,7 @@ session_start();
                <div class="filter">
                     <p class="filter_name">Category</p>
                     <div class="label_choice">
-                        <input type="radio" id="category_all" name="category" value="category_all" checked>
+                        <input type="radio" id="category_all" name="category" value="all" checked>
                         <label for="category_all">All</label>
                     </div>
                     <?php 
@@ -57,7 +57,7 @@ session_start();
                     <p class="filter_name">Price Range</p>
                     <div class="slider_container">
                         <p class="slider_values">0$</p>
-                        <input type="range" min="1" max="100" value="10" class="slider" id="myRange" onchange="updateTextInput(this.value);">
+                        <input type="range" name="price" min="1" max="100" value="10" class="slider" id="myRange" onchange="updateTextInput(this.value);">
                         <p class="slider_values">100$</p>
                         <p class="label_choice">Value:</p>
                         <input type="text" id="textInput" value="10" class="small_value">
@@ -67,7 +67,7 @@ session_start();
                 <div class="filter">
                     <p class="filter_name">Season</p>
                     <div class="label_choice">
-                        <input type="radio" id="season_all" name="season" value="season_all" checked>
+                        <input type="radio" id="season_all" name="season" value="all" checked>
                         <label for="season_all">All</label>
                     </div>
                     <div class="label_choice">
@@ -91,7 +91,7 @@ session_start();
                 <div class="filter">
                     <p class="filter_name">Diet</p>
                     <div class="label_choice">
-                        <input type="radio" id="diet_none" name="diet" value="diet_none" checked>
+                        <input type="radio" id="diet_none" name="diet" value="none" checked>
                         <label for="diet_none">None</label>
                     </div>
                     <div class="label_choice">
@@ -105,15 +105,9 @@ session_start();
                 </div>
 
                 <div class="filter">
-                    <p class="filter_name">Ingredient filter</p>
-                    <input type="text" class="small_textbox" id="ingredient_input">
-                </div>
-
-                <div class="filter">
                     <p class="filter_name">Alergens</p>
                         <div class="label_choice">
-                            <input type="radio" id="alergens_all" name="alergens" value="alergens_all" checked>
-                            <label for="alergens_all">None</label>
+                            
                         </div>
                         <?php 
                             $connection = mysqli_connect("localhost", "root", "", "forg");
@@ -126,7 +120,7 @@ session_start();
                                 while($row = mysqli_fetch_array($result)) {
                                     
                                     echo '<div class="label_choice">
-                                    <input type="radio" id="'. strtolower($row['name']) .'" name="alergens" value="'. strtolower($row['name']) .'">
+                                    <input type="checkbox" id="'. strtolower($row['name']) .'" name="alergens" value="'. strtolower($row['name']) .'">
                                     <label for="'. strtolower($row['name']) .'">'. ucfirst($row['name']) .'</label>
                                     </div>';
                                 }
