@@ -66,8 +66,13 @@ if(isset($_SESSION['email']))
 		$count = $stmt->rowCount();
 		if ($count == 1)
 		{
+			$row = $stmt->fetch();
 			$_SESSION['email']=$email;
-			$_SESSION['name']=$stmt->fetch()['first_name'];
+			$_SESSION['name']=$row['first_name'];
+
+			if($row["isAdmin"]==1){
+				$_SESSION['admin'] = 1;
+			}
 			
 			echo "<script>location.href = 'home.php'</script>";
 		}

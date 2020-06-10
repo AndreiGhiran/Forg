@@ -25,6 +25,11 @@
                     <a href="statistics.php">Statistics</a>
                 </li>
                 <?php
+                if(isset($_SESSION['admin'])){
+                    echo '<li>
+                        <a href="admin.php">Admin</a>
+                        </li>';
+                }
                 if(isset($_SESSION['email']))
                 {
                     echo '<li>
@@ -33,8 +38,8 @@
                 }
                 else{
                     echo '<li>
-                    <a href="login.php">Login</a>
-                    </li>';
+                        <a href="login.php">Login</a>
+                        </li>';
                 }
                 ?>
                 

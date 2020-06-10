@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!isset($_SESSION['email']) || !isset($_SESSION['admin']))
+{
+	 echo "<script>location.href = 'home.php'</script>";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
