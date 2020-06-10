@@ -25,12 +25,6 @@ if(!isset($_SESSION['email']))
             <h1>Your Sopping List</h1>
         </div>
         <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-            <table style="width:100%" class = "statistics_table">
-                <tr>
-                    <th>Product</th>
-                    <th>Quantiti</th>
-                    <th>Checked</th>
-                </tr>
                 <?php
                 include('Includere/connection.php');
                 $stmt = $dbh->prepare("SELECT id FROM `users` where email = :email;");
@@ -39,46 +33,66 @@ if(!isset($_SESSION['email']))
                 $email = $_SESSION['email'];
 
                 $stmt->execute();
+                
+                
+                    $usr_id =  $stmt->fetch()['id'];
 
-                $usr_id =  $stmt->fetch()['id'];
+                    $stmt = $dbh->prepare("SELECT name, quantity, product_id  FROM shoping_lists s JOIN products p on p.id = s.product_id WHERE user_id = :id;");
 
-                $stmt = $dbh->prepare("SELECT name, quantity, product_id  FROM shoping_lists s JOIN products p on p.id = s.product_id WHERE user_id = :id;");
+                    $stmt->bindParam(':id', $id);
 
-                $stmt->bindParam(':id', $id);
+                    $id=$usr_id;
 
-                $id=$usr_id;
-
-                $stmt->execute();
-                $items = array();
-                while ($row = $stmt->fetch()) {
-                    $items[] =  ucfirst($row['name']) . '_check';
-                    if(count(explode("_", $row['name'])) > 1){
-                        echo '<tr>
-                            <td>';
-                        $words = explode("_", $row['name']);
-                        for ($i = 0; $i< count($words)-1;$i++){
-                            echo  ucfirst($words[$i]) . " ";
-                        }
-                        echo ucfirst($words[count($words)-1]) . "</td> 
-                            <td>".$row['popularity']."</td>
-                        </tr>";
-                    }
-                    else{
-                        echo '<tr>
-                            <td>' .  ucfirst($row['name']) . '</td>
-                            <td>'.$row['quantity'].'</td>
-                            <td><input type="checkbox" id="productcheck" name="' .  ucfirst($row['name']) . '_check" value= '. $row['product_id'] . ' ></td>
+                    $stmt->execute();
+                    if($stmt->rowCount() > 0){
+                        echo $stmt->rowCount();
+                        echo '<table style="width:100%" class = "statistics_table">
+                        <tr>
+                            <th>Product</th>
+                            <th>Quantiti</th>
+                            <th>Checked</th>
                         </tr>';
-                    }
-                }
 
-                $dbh = null;
+                    $items = array();
+                    while ($row = $stmt->fetch()) {
+                        $items[] =  ucfirst($row['name']) . '_check';
+                        if(count(explode("_", $row['name'])) > 1){
+                            echo '<tr>
+                                <td>';
+                            $words = explode("_", $row['name']);
+                            for ($i = 0; $i< count($words)-1;$i++){
+                                echo  ucfirst($words[$i]) . " ";
+                            }
+                            echo ucfirst($words[count($words) - 1]) . '</td> 
+                                <td>'.$row['quantity'].'</td>
+                                <td><input type="checkbox" id="productcheck" name="' .  ucfirst($row['name']) . '_check" value= '. $row['product_id'] . ' ></td>
+                            </tr>';
+                        }
+                        else{
+                            echo '<tr>
+                                <td>' .  ucfirst($row['name']) . '</td>
+                                <td>'.$row['quantity'].'</td>
+                                <td><input type="checkbox" id="productcheck" name="' .  ucfirst($row['name']) . '_check" value= '. $row['product_id'] . ' ></td>
+                            </tr>';
+                        }
+                    }
+
+                    $dbh = null;
+                    echo ' </table> 
+                
+                    <input type="submit" name="submit" class="main_button" value="Remove Checked Items">';
+                    
+                }
+                else{
+                    echo '</form>
+                    <div class="headlines2">
+                        <h3>Your Sopping List Appears to be Empty. <a href="search.php">Search</a> for what you want and add it to your list.</h3>
+                    </div>';
+                }
                 ?>
-            </table> 
-            
-		        <input type="submit" name="submit" class="main_button" value="Remove Checked Items">
+           
 		    
-        </form>
+        
        
     </main>
 
