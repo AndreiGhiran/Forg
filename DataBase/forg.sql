@@ -1,9 +1,18 @@
 DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS `banned_users`;
 DROP TABLE IF EXISTS `products`;
 DROP TABLE IF EXISTS `produces`;
 DROP TABLE IF EXISTS `shoping_lists`;
 DROP TABLE IF EXISTS `statistics`;
 DROP TABLE IF EXISTS `allergens`;
+
+
+
+CREATE TABLE banned_users (
+  `id` int(11) NOT NULL,
+  `email` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+ 
 
 CREATE TABLE users (
   `id` int(11) NOT NULL,
@@ -74,9 +83,19 @@ ALTER TABLE `users`
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
+ALTER TABLE `banned_users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
+
   ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
+
+  ALTER TABLE `products`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+COMMIT;
   
-  
+  ALTER TABLE `banned_users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
+COMMIT;
 
