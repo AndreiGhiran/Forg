@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Forg</title>
+        <style>
+            section{margin-left: 5% ; margin-right: 20%; text-align: justify }
+            p{text-align: justify}
+            img{display: block;margin-left: auto;margin-right: auto;}
+            h1{text-align: center; font-size: 40px}
+            h4{margin-left:2%;}
+        </style>
+    </head>
+
+    <body >
+        <section>
+            <h1>Forg</h1>
+            <p>
+                <h2>1. Introduction</h2>
+                <p>
+                    <p>
+                        &emsp;Forg is a web platform which helps manage creating and managing shoping lists for food items.
+                    </p>
+                </p>
+            </p>
+        </section>
+
+        <section>
+            <h2>2. User types</h2>
+            <p>
+                &emsp; The application admits multiple types of users, each of them being provided with various functionalities.
+                <h3>2.1. Regular user</h3>
+                <p>
+                    <h4>2.1.1. Unuthenticated user/Guest</h4>
+                    <p>
+                        &emsp; This kind of user has minimal access to the application. He can either register in order to become an authenticated user, 
+                        or just use the functionalities provided for him: view the lists of most popular items on the site or search for items.
+                    </p>
+
+                    <h4>2.1.2. Authenticated user</h4>
+                    <p>
+                        &emsp;This user has already created an account and has logged in. In addition to the functionalities of a guest, 
+                        this user can also add or remove items from his personal shoping list in the database and export it to his machine.
+                    </p>
+                </p>
+                <h3>2.2. Organization</h3>
+                <p>
+                    &emsp;This is the most powerful kind of user in this application. They belong to profile organisations or authorities.
+                    They can use any of the functionalities mentioned before. They are also responsable of adding or removing users and new 
+                    items. They can also permanently ban a user from the website.
+                </p>
+            </p>
+        </section>
+
+        <section>
+            <h2>3. Use cases</h2>
+            <p>
+                <h3>3.1. Authentification</h3>
+                <img src="../doc_img/auth.jpg" alt="Authentification use case diagram">
+                <p>
+                        <p>&emsp;If the user has an account, then he has to use the username and password he set to login.
+                            Otherwise, in order to create an account, a user has to complete a registration form.</p>
+                </p>
+
+                <h3>3.2. Handeling item searches</h3>
+                <img src="../doc_img/shelter.jpg" alt="Shelters use case diagram">
+                <p>
+                        <p>&emsp; Each available item can be added by an organization account. When items are no longer available, the organization accounts have to get rid of them. A regular user, wheter logged in or not, is able to search for items. 
+                        </p>
+                </p>
+
+                <h3>3.3. Handling alerts</h3>
+                <img src="../doc_img/alert.jpg" alt="Alerts use case diagram">
+                <p>
+                        <p>&emsp;
+                                When a new alert occurs, it is added to the app by an organization account and then removed when
+                                it is no longer happening. All users get a notification with information about an alert when it
+                                is added and then are able to see a list of all the active alerts.
+                        </p>
+                </p>
+
+                <h3>3.4. Handling missing people</h3>
+                <img src="../doc_img/missing.jpg" alt="Missing people use case diagram">
+                <p>
+                        <p>&emsp;
+                            Any authenticated user can request adding or removing a missing person. The organization accounts have
+                            to check if the request is justify and proceed act accordingly. 
+                            &emsp; When a user requests adding a missing person, their infomration becoms the contact information
+                            for the missing person in case they are found. The user who made the requests will also recieve a notification 
+                            when the person is declared found and removed from the database.
+                            &emsp;Any user can see the list of missing people.
+                        </p>
+                </p>
+            </p>
+        </section>
+
+        <section>
+            <h2>4. Database  </h2>
+            <p>
+                <h3>4.1. Relational database schema</h3>
+                <img src="../doc_img/db.jpg" alt="Database relational schema" style="width: 60%; height: 60%;">
+                <h3>4.2. Non-relational database schema</h3>
+                <img src="../doc_img/ndb.jpg" alt="Database non-relational schema" style="width: 60%; height: 60%;">
+                <p>
+  
+                        <h4>Users</h4>
+                        <p>
+                                After creating an account, the information provided by the user in order to create the account will be
+                                saved here.
+                        </p>
+        
+                        <h4>Products</h4>
+                        <p>
+                                Contains all the products available and information about them.
+                        </p>
+        
+                        <h4>Shoping Lists</h4>
+                        <p>
+                                Contains the shoping lists of all users.
+                        </p>
+        
+                        <h4>Alergens</h4>
+                        <p>
+                                Contains pairs of product id's and the alergens they contain.
+                        </p>
+        
+                        <h4>Perma_banned_users</h4>
+                            <p>
+                                    Contains the emails of past users that have been permanently banned from the website.
+                            </p>
+
+                </p>
+            </p>
+        </section>
+
+        <section>
+            <h2>5. Technologies</h2>
+            <p>
+                <h3>5.1. PHP</h3>
+                <img src="../doc_img/php.jpg" alt="Php diagram">
+                <h3>5.2. HTML5</h3>
+                <h3>5.3. CSS3</h3>
+                <h3>5.4. MySQL</h3>
+                <h3>5.5. Apache</h3>
+                <h3>5.6. HTTP</h3>
+                <h3>5.7. XAMPP</h3>
+                <h3>5.6. JavaScript</h3>
+                <h3>5.7. API's</h3>
+            </p>
+        </section>
+
+        <section>
+            <h2>6. Application architecture</h2>
+            <p>
+                <h3>MVC diagram</h3>
+                <img src="../doc_img/mvr.jpg" alt="Php diagram">
+            </p>
+        </section>
+
+
+        <section>
+            <h2>Authors</h2>
+            <ul></ul>
+            <li>Cernat Cristina Mihaela (C)</li>
+            <li>Ghiran Andrei (A)</li>
+            </ul>
+        </section>
+
+    </body>
+</html>
