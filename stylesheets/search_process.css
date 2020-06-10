@@ -1,0 +1,50 @@
+main {
+    display: flex;
+    padding-top: 80px;
+    justify-content: center;
+    height: 70vh;
+}
+
+table {
+    font-family: 'Lato', sans-serif;
+    color: #7A2B0C;
+    table-layout: fixed;
+    border-collapse: separate;
+    border: 3px solid #7A2B0C;
+    border-radius: 15px;
+  }
+  
+th, td {
+padding: 20px;
+border: 0px;
+}
+
+td:nth-child(2){
+    text-align: end;
+}
+
+tr{
+    border: 0px;
+}
+
+th{
+    background-color: #CC908A;
+}
+
+tr:nth-child(odd){
+    border: 0px;
+    background-color: #FAEBD7;
+}
+.a_info {
+    color: #7A2B0C;
+    font-weight: 600;
+}
+.a_info:hover {
+    color: #CC908A; 
+}
+.no_results {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: x-large;
+    color: #7A2B0C;
+}

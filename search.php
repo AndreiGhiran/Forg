@@ -24,7 +24,7 @@ session_start();
                 <p class="main_search">Searh food products</p>
 
                 <input type="text" name="name" class="main_textbox" id="recipe_input">
-                    <input type="submit" class="submit" value="Search">
+                <input type="submit" class="submit" value="Search">
            </div>
            
            <div class="filters_container">
@@ -120,7 +120,7 @@ session_start();
                                 while($row = mysqli_fetch_array($result)) {
                                     
                                     echo '<div class="label_choice">
-                                    <input type="checkbox" id="'. strtolower($row['name']) .'" name="alergens" value="'. strtolower($row['name']) .'">
+                                    <input type="checkbox" id="'. strtolower($row['name']) .'" name="allergens[]" value="'. strtolower($row['name']) .'">
                                     <label for="'. strtolower($row['name']) .'">'. ucfirst($row['name']) .'</label>
                                     </div>';
                                 }

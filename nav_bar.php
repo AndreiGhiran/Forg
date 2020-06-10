@@ -45,10 +45,10 @@
                     <a href="search.php"><img src="img/Search.svg" alt="Search"></a>
                 </li>
                 <li>
-                    <a href="#"><img src="img/Shopping_List.svg" alt="Shopping List"></a>
+                    <a href="shopping_list.php"><img src="img/Shopping_List.svg" alt="Shopping List"></a>
                 </li>
                 <li>
-                    <a href="#"><img src="img/Statistics.svg" alt="Statistics"></a>
+                    <a href="statistics.php"><img src="img/Statistics.svg" alt="Statistics"></a>
                 </li>
                 <?php
                 if(isset($_SESSION['email']))

@@ -1,9 +1,13 @@
+<?php 
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search results</title>
+    <link rel="stylesheet" href="stylesheets/search_process.css">
 </head>
 <body>
     <header>
@@ -12,16 +16,18 @@
         ?>
     </header>
    <main>
-                   
-          <?php 
+       <h1>
+
+       </h1>
+       
+            <?php 
             include('Includere/connection.php');
 
             $category_string = " AND category = :category ";
             $price_string = " AND price <= :price ";
             $season_string = " AND season = :season ";
             $diet_string = " AND diet = :diet ";
-            $allergens_string = "";
-            // $allergens_string = " AND allergens IN (:allergens) ";
+            $allergens_string = " AND id NOT IN (SELECT product_id FROM allergens WHERE name IN (";
 
             $category_q = $_GET['category'];
             $season_q = $_GET['season'];
@@ -38,13 +44,34 @@
                 $diet_string = "";
             }
             
+            if(isset($_GET['allergens'])) {
+
+                $allergens = $_GET['allergens'];
+                $string = '';
             
-            $query = "SELECT * FROM `products`
-                WHERE name = :name " . $category_string . $price_string . $season_string . $diet_string . $allergens_string . ";";
+                for($i=0; $i<count($allergens)-1; $i++) {
+                    $allergens_string .= ":allergen".$i.", ";
+                }
+                $c = count($allergens) -1;
+                
+                $allergens_string .= ":allergen".$c;
+                $allergens_string .= "))";
+
+            }
+           
+            else $allergens_string='';
+            
+            // SELECT * FROM products WHERE id NOT IN (SELECT product_id FROM allergens WHERE name IN ('lactose', 'gluten'));
+            
+            $query = "SELECT * FROM products
+                WHERE (name LIKE :name1 OR name like :name2 OR name like :name3) ". $category_string . $price_string . $season_string . $diet_string . $allergens_string . ";";
+            
             $stmt = $dbh->prepare($query);
-            $stmt->bindParam(':name', $name);        
+            $stmt->bindParam(':name1', $name1); 
+            $stmt->bindParam(':name2', $name2); 
+            $stmt->bindParam(':name3', $name3); 
             $stmt->bindParam(':price', $price);
-            // $stmt->bindParam(':allergens', $allergens);
+            //$stmt->bindParam(':allergens', $string);
 
             if ($category_q != "all") {
                 $stmt->bindParam(':category', $category);
@@ -56,27 +83,74 @@
                 $stmt->bindParam(':diet', $diet);
             }
             
-
-            $name = $_GET['name'];
+            // echo '|'.$_GET['name'].'|';
+            // echo $query;
+            $name1 = $_GET['name'].'%';
+            $name2 = '%'.$_GET['name'];
+            $name3 = '%'.$_GET['name'].'%';
             $category = $category_q;
             $price = $_GET['price'];
             $season = $_GET['season'];
             $diet = $_GET['diet'];
-            // $allergens = $_GET['allergens'];
+            if(isset($_GET['allergens'])) {
 
+                $allergens = $_GET['allergens'];
+
+            
+                for($i=0; $i<count($allergens); $i++) {
+                    $stmt->bindParam(':allergen'.$i, $allergens[$i]);
+                    
+                }
+            $allergens = $_GET['allergens'];
+                
+
+                
+            
+            }
+            else $allergens=null;
+
+            
 
             $stmt->execute();
 
             $count = $stmt->rowCount();
-            if($count){
+            if($count != 0){
+                echo "
+                <table>
+                    <thead>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Category</th>
+                        <th>Season</th>
+                        <th>Diet</th>
+                        <th>Perishability</th>
+                        <th>See more</th>
+                    </thead> 
+                    <tbody>";
                 while ($row = $stmt->fetch()) {
-                    echo "<p>".$row['name']."</p>";
+                    echo 
+                            "<tr>
+                                <td>".strtr(ucfirst($row['name']),"_", " ")."</td>
+                                <td>".$row['price']."</td>
+                                <td>".strtr(ucfirst($row['category']),"_", " ")."</td>
+                                <td>".ucfirst($row['season'])."</td>
+                                <td>".ucfirst($row['diet'])."</td> 
+                                <td>".ucfirst($row['perishability'])."</td>
+                                <td><a href=\"product.php?id=".$row['id']."\" class=\"a_info\">More info</a></td>
+                            </tr>";
+                        
                 }
+                echo 
+                "</tbody> 
+                </table>";
             }
-            else echo 'no results';
+            else echo '<p class = "no_results">No results :(</p>';
             
             
         ?>
+            
+              
+          
    </main>
 </body>
 </html>

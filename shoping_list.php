@@ -45,7 +45,7 @@ if(!isset($_SESSION['email']))
 
                     $stmt->execute();
                     if($stmt->rowCount() > 0){
-                        echo $stmt->rowCount();
+                        
                         echo '<table style="width:100%" class = "statistics_table">
                         <tr>
                             <th>Product</th>

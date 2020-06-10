@@ -22,7 +22,7 @@ session_start();
             <img src="img/Logo_Big.svg" alt="Big Nice Logo">
        </div>
        <div class="headlines">
-            <h1>Organize your shoping list. Search ingredients and make checklists</h1>
+            <h1>Organize your food. Search food products, make shopping lists, see stats</h1>
             <h2>All one place.</h2>
        </div>
        <div class="buttons">
