@@ -94,8 +94,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->execute();
             echo "<p>Item Added!</p></div>";
         }
+
+        $stmt = $dbh->prepare("SELECT popularity FROM products WHERE id = :id ;");
+        $stmt->bindParam(':id', $prod_id);
+        $stmt->execute();
+
+        $new_pop = $stmt->fetch()['popularity'] + 1;
+
+        $stmt = $dbh->prepare("UPDATE products SET popularity = :pop WHERE id = :p_id ");
+
+        $stmt->bindParam(':p_id', $prod_id);
+        $stmt->bindParam(':pop', $new_pop);
+
+        $stmt->execute();
+
     }
     
+
 
     $dbh = null;
     
