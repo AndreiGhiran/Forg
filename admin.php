@@ -1,10 +1,9 @@
-<?php
-session_start();
-if(!isset($_SESSION['email']) || !isset($_SESSION['admin']))
-{
-	 echo "<script>location.href = 'home.php'</script>";
-}
-?>
+    <?php
+        session_start(); 
+        if(!isset($_SESSION['email']) || !isset($_SESSION['admin'])) {
+            echo "<script>location.href = 'home.php'</script>";
+        }
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,10 +23,10 @@ if(!isset($_SESSION['email']) || !isset($_SESSION['admin']))
     
     function banuser() {
         
-        var ceva = document.getElementById("myform");
+        var ceva = document.getElementById("myuser");
         console.log("hello");
         var rawFile = new XMLHttpRequest();
-        rawFile.open("GET", "form_user.txt", false);
+        rawFile.open("GET", "form_user.php", false);
         rawFile.onreadystatechange = function ()
         {
             if(rawFile.readyState === 4)
@@ -37,7 +36,6 @@ if(!isset($_SESSION['email']) || !isset($_SESSION['admin']))
                 {
                     var allText = rawFile.responseText;
                     ceva.innerHTML=allText;
-                    // console.log(allText);
                 }
                 else ceva.innerHTML = "Something wrong";
             }
@@ -46,14 +44,32 @@ if(!isset($_SESSION['email']) || !isset($_SESSION['admin']))
     }
 
     function additem() {
-        
+        var ceva = document.getElementById("myitem");
+        console.log("hello");
+        var rawFile = new XMLHttpRequest();
+        rawFile.open("GET", "form_item.php", false);
+        rawFile.onreadystatechange = function ()
+        {
+            if(rawFile.readyState === 4)
+            {
+                console.log("if ready");
+                if(rawFile.status === 200 || rawFile.status == 0)
+                {
+                    var allText = rawFile.responseText;
+                    ceva.innerHTML=allText;
+                }
+                else ceva.innerHTML = "Something wrong";
+            }
+        }
+        rawFile.send(null);
     }
 </script>
     <main>
-        <button onclick="banuser()">Ban user</button>
-        <div id="myform">
+        <button onclick="banuser()" class="button">Ban user</button>
+        <div id="myuser">
+
         </div>
-        <button onClick="additem()">Add Item</button>
+        <button onClick="additem()" class="button">Add Item</button>
         <div id="myitem">
 
         </div>
