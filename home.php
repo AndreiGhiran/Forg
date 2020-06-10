@@ -23,7 +23,7 @@ session_start();
        </div>
        <div class="headlines">
             <h1>Organize your food. Search food products, make shopping lists, see stats</h1>
-            <h2>All one place.</h2>
+            <h2>All in one place.</h2>
        </div>
        <div class="buttons">
             <a href="search.php"><button type="button" class="main_button" value="SEARCH FOOD">SEARCH FOOD</button></a>

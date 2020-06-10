@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 if(!isset($_SESSION['email']))
@@ -37,7 +38,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 </head>
 
 <script>
-
     function remove_item(value) {
         console.log(value);
         var user = value.split("_")[0];
@@ -67,6 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
         document.body.appendChild(form);
         form.submit();
+        
     }
 
 </script>
@@ -80,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
     <main>
        <div class="headlines">
-            <h1>Your Sopping List</h1>
+            <h1>Your Shopping List</h1>
        
                 <?php
                 include('Includere/connection.php');
@@ -106,7 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                         echo '<table style="width:100%" class = "statistics_table" id="list">
                         <tr>
                             <th>Product</th>
-                            <th>Quantiti</th>
+                            <th>Quantity</th>
                             <th>Checked</th>
                         </tr>';
 

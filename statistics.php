@@ -26,7 +26,7 @@ session_start();
                 </tr>
                 <?php
                 include('Includere/connection.php');
-                $stmt = $dbh->prepare("SELECT name, popularity FROM `products` order by popularity;");
+                $stmt = $dbh->prepare("SELECT name, popularity FROM `products` order by popularity DESC;");
                 $stmt->execute();
                 while ($row = $stmt->fetch()) {
                         if(count(explode("_", $row['name'])) > 1){
