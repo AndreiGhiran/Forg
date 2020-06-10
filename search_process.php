@@ -114,8 +114,11 @@
             $stmt->execute();
 
             $count = $stmt->rowCount();
+            
             if($count != 0){
+                //style=\"overflow-x:auto\"
                 echo "
+                <div >
                 <table>
                     <thead>
                         <th>Name</th>
@@ -142,7 +145,8 @@
                 }
                 echo 
                 "</tbody> 
-                </table>";
+                </table>
+                </div>";
             }
             else echo '<p class = "no_results">No results :(</p>';
             
