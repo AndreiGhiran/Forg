@@ -9,9 +9,9 @@ main {
 
 .main_button {
     background-color: #FAEBD7;
-    margin-top: 10px;
-    margin-left: 80%;
     padding: 15px;
+    padding-left: 25%;
+    padding-right: 25%;
     border: 2px solid #CC908A;
     border-radius: 60px;
     font-family: 'Raleway', sans-serif;
@@ -41,12 +41,26 @@ h1 {
     padding-right: 2em;
 }
 
+h3 {
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 0.48px;
+    color: #7A2B0C;;
+    text-align: center;
+    padding-left: 2em;
+    padding-right: 2em;
+    opacity: 0.7;
+}
+
+h3 a{
+    text-decoration: none;
+}
+
 table {
     font-family: 'Raleway', sans-serif;
     color: #7A2B0C;
     table-layout: fixed;
     border-collapse: separate;
-    border: 3px solid #7A2B0C;
+    border: 10px solid #7A2B0C;
     border-radius: 15px;
   }
   
