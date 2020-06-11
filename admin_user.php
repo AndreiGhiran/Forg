@@ -1,7 +1,6 @@
 <?php
     session_start();
-    // || !isset($_SESSION['admin'])
-    if(!isset($_SESSION['email']) ) {
+    if(!isset($_SESSION['email']) || !isset($_SESSION['admin'])) {
 	    echo "<script>location.href = 'home.php'</script>";
     }
 ?>
@@ -23,10 +22,18 @@
         <?php
             include('Includere/connection.php');
             if (isset($_POST['email'])) {
-                $stmt = $dbh->prepare("INSERT INTO banned_users (email) VALUES (:email)");
+                
+                
+                $stmt = $dbh->prepare("INSERT INTO banned_users (email) VALUES (:email);");
                 $stmt->bindParam(':email', $email);
                 $email = $_POST['email'];
                 $stmt->execute();
+
+                $stmt = $dbh->prepare("DELETE FROM users WHERE email = :email1");
+                $stmt->bindParam(':email1', $email1);
+                $email1 = $_POST['email'];
+                $stmt->execute();
+                
                 echo "User banned";
             }
           $dbh = null;

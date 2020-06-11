@@ -1,7 +1,6 @@
 <?php
     session_start();
-    // || !isset($_SESSION['admin'])
-    if(!isset($_SESSION['email']) ) {
+    if(!isset($_SESSION['email']) || !isset($_SESSION['admin']) ) {
 	    echo "<script>location.href = 'home.php'</script>";
     }
 ?>

@@ -1,9 +1,9 @@
-    <?php
-        session_start(); 
-        if(!isset($_SESSION['email']) || !isset($_SESSION['admin'])) {
-            echo "<script>location.href = 'home.php'</script>";
-        }
-    ?>
+<?php
+    session_start(); 
+    if(!isset($_SESSION['email']) || !isset($_SESSION['admin'])) {
+        echo "<script>location.href = 'home.php'</script>";
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +24,6 @@
     function banuser() {
         
         var ceva = document.getElementById("myuser");
-        console.log("hello");
         var rawFile = new XMLHttpRequest();
         rawFile.open("GET", "form_user.php", false);
         rawFile.onreadystatechange = function ()
@@ -45,7 +44,6 @@
 
     function additem() {
         var ceva = document.getElementById("myitem");
-        console.log("hello");
         var rawFile = new XMLHttpRequest();
         rawFile.open("GET", "form_item.php", false);
         rawFile.onreadystatechange = function ()
