@@ -18,7 +18,7 @@ session_start();
 
     <main>
        <div class="headlines">
-            <h1>Most Popular Items</h1>
+            <p class="h1">Most Popular Items</p>
             <table style="width:100%" class = "statistics_table">
                 <tr>
                     <th>Product</th>
@@ -29,7 +29,7 @@ session_start();
                 $stmt = $dbh->prepare("SELECT name, popularity FROM `products` order by popularity DESC;");
                 $stmt->execute();
                 $index = 0;
-                while (($row = $stmt->fetch()) && ($index<=7)) {
+                while (($row = $stmt->fetch()) && ($index<7)) {
                         if(count(explode("_", $row['name'])) > 1){
                             echo '<tr>
                                 <td>';

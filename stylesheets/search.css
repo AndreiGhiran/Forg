@@ -119,7 +119,7 @@ main {
         width: 30em;    
     }
     .logo_big {
-        padding-top: 0px;
+        padding-top: 0;
     }
 }
 @media only screen and (max-width: 550px) {
@@ -129,6 +129,6 @@ main {
         align-items: flex-start;
     }
     .logo_big {
-        padding-top: 0px;
+        padding-top: 0;
     }
 }

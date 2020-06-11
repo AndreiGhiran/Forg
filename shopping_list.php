@@ -81,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
     <main>
        <div class="headlines">
-            <h1>Your Shopping List</h1>
+            <p class="h1">Your Shopping List</p>
        
                 <?php
                 include('Includere/connection.php');
@@ -142,7 +142,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                 else{
                     echo '</div>
                     <div class="headlines2">
-                        <h3>Your Sopping List Appears to be Empty. <a href="search.php">Search</a> for what you want and add it to your list.</h3>
+                        <p class="h3">Your Sopping List Appears to be Empty. <a href="search.php">Search</a> for what you want and add it to your list.</p>
                     </div>';
                 }
                 ?>

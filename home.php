@@ -22,8 +22,8 @@ session_start();
             <img src="img/Logo_Big.svg" alt="Big Nice Logo">
        </div>
        <div class="headlines">
-            <h1>Organize your food. Search food products, make shopping lists, see stats</h1>
-            <h2>All in one place.</h2>
+            <p class = "h1">Organize your food. Search food products, make shopping lists, see stats</p>
+            <p class = "h2">All in one place.</p>
        </div>
        <div class="buttons">
             <button type="button" class="main_button" value="SEARCH FOOD" onclick="location.href='search.php'">SEARCH FOOD</button>

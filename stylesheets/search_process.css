@@ -18,7 +18,7 @@ table {
   
 th, td {
     padding: 20px;
-    border: 0px;
+    border: 0;
 }
 
 td:nth-child(2){
@@ -26,7 +26,7 @@ td:nth-child(2){
 }
 
 tr{
-    border: 0px;
+    border: 0;
 }
 
 th{
@@ -34,7 +34,7 @@ th{
 }
 
 tr:nth-child(odd){
-    border: 0px;
+    border: 0;
     background-color: #FAEBD7;
 }
 .a_info {

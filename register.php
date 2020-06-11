@@ -22,7 +22,7 @@ if(isset($_SESSION['email']))
 		</header>
 
 		<div class="right-side">
-		<h1>Register</h1>
+		<p class="h1">Register</p>
 		<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
 

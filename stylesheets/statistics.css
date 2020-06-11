@@ -15,9 +15,11 @@ main {
     width: 50%;
 }
 
-h1 {
+.h1 {
     font-family: 'Raleway', sans-serif;
     letter-spacing: 0.48px;
+    font-size: x-large;
+    font-weight: bold;
     color: #7A2B0C;
     text-align: center;
     padding-left: 2em;

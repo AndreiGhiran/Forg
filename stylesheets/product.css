@@ -1,14 +1,16 @@
 main {
     display: flex;
-    justify-content: left;
+    justify-content: flex-start;
     padding-left: 5em;
     padding-top: 80px;
     height: 70vh;
 
 }
-h1, label, p {
+.h1, label, p {
     font-family: 'Raleway', 'sans-serif';
     color: #7A2B0C;
+    font-weight: 700;
+    font-size: 50px;
     text-align: center;
 }
 .info {
@@ -54,9 +56,9 @@ h1, label, p {
     main {
         flex-direction: column;
         align-items: center;
-        padding-left: 0em;
+        padding-left: 0;
     }
     .product_img {
-        padding-right: 0em;
+        padding-right: 0;
     }
 }
