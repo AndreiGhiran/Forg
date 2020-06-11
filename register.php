@@ -96,7 +96,7 @@ if(isset($_SESSION['email']))
 
 		$count = $stmt->rowCount();
 
-		if ($count == 0){
+		if ($count != 0){
 			echo '<script type="text/javascript">alert("Thie email adress has been banned from our sebsite")</script>';
 			echo "<script>location.href = 'home.php'</script>";
 		}
