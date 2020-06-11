@@ -17,5 +17,8 @@
     <label for="perishability">Perishability</label>
     <input type="text" name="perishability">
 
+    <label for="allergens">Allergens</label>
+    <input type="text" name="allergens">
+
     <input type="submit" class="submit" value="Submit">
 </form>

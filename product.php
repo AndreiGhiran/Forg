@@ -1,5 +1,10 @@
 <?php
     session_start();
+    if(!isset($_SESSION['email']))
+        {
+            echo "<script>location.href = 'login.php'</script>";
+            
+        }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +38,7 @@
                 "<div class=\"info\">
                     <h1>".strtr(ucfirst($data['name']), "_", " ")."</h1>
                     <div class=\"quantity\">
-                    <form method=\"POST\" action\"?\">
+                    <form method=\"POST\">
                         <label for=\"quantity\">Quantity:</label>
                         <input type=\"number\" name=\"quantity\" value=\"1\" min=\"1\"</input></div>
                         <input type=\"submit\" class=\"submit\" value=\"Add\"></input>
@@ -121,4 +126,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </main>
 </body>
 </html>
-

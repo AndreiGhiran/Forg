@@ -38,6 +38,20 @@
                 $perishability = (isset($_POST['perishability']) ? $_POST['perishability'] : null);
         
                 $stmt->execute();
+
+                $stmt = $dbh->prepare("SELECT id FROM `products` where name = :name1;");
+                $stmt->bindParam(':name1', $name1);
+                $name1 = $name;
+                $stmt->execute();
+                $id = $stmt->fetch()['id'];
+
+                $stmt = $dbh->prepare("INSERT INTO allergens (name, product_id) VALUES (:allergen_name, :product_id)");
+                $stmt->bindParam(':allergen_name', $allergens);
+                $stmt->bindParam(':product_id', $product_id);
+                $product_id = $id;
+                $allergens = (isset($_POST['allergens']) ? $_POST['allergens'] : null);
+                $stmt->execute();
+
                 echo "Item added";
             }
         ?>

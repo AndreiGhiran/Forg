@@ -7,12 +7,12 @@ if(isset($_SESSION['email']))
 ?>
 
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
 	<head>
 	  <title>Forg Login</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel='stylesheet', href='stylesheets/login.css'>
+		<link rel='stylesheet' href='stylesheets/login.css'>
 	</head>
 	<body>
 

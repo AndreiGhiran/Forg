@@ -1,14 +1,5 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="stylesheets/nav_bar.css" rel="stylesheet">
-    <title>FoodOrg Home</title>
-</head>
-<body>
     <nav>
+        <link rel="stylesheet" href="stylesheets/nav_bar.css">
         <div class="nav_bar">
             <div>
                 <a href="home.php" class="small_logo"><img src="img/Logo_small.svg" alt="Nice Logo"></a>
@@ -71,4 +62,3 @@
             </ul>
         </div>
     </nav>
-</body>

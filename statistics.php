@@ -28,7 +28,8 @@ session_start();
                 include('Includere/connection.php');
                 $stmt = $dbh->prepare("SELECT name, popularity FROM `products` order by popularity DESC;");
                 $stmt->execute();
-                while ($row = $stmt->fetch()) {
+                $index = 0;
+                while (($row = $stmt->fetch()) && ($index<=7)) {
                         if(count(explode("_", $row['name'])) > 1){
                             echo '<tr>
                                 <td>';
@@ -46,9 +47,13 @@ session_start();
                                 <td>'.$row['popularity'].'</td>
                             </tr>';
                         }
+                        $index += 1;
                   }
                 ?>
             </table> 
+            <form action="export.php">
+                <input type="submit" class="submit" value="Export">
+            </form>
        </div>
     </main>
 

@@ -16,9 +16,6 @@
         ?>
     </header>
    <main>
-       <h1>
-
-       </h1>
        
             <?php 
             include('Includere/connection.php');
@@ -121,6 +118,7 @@
                 <div >
                 <table>
                     <thead>
+                    <tr>
                         <th>Name</th>
                         <th>Price</th>
                         <th>Category</th>
@@ -128,6 +126,7 @@
                         <th>Diet</th>
                         <th>Perishability</th>
                         <th>See more</th>
+                    </tr>
                     </thead> 
                     <tbody>";
                 while ($row = $stmt->fetch()) {
@@ -139,7 +138,7 @@
                                 <td>".ucfirst($row['season'])."</td>
                                 <td>".ucfirst($row['diet'])."</td> 
                                 <td>".ucfirst($row['perishability'])."</td>
-                                <td><a href=\"product.php?id=".$row['id']."\" class=\"a_info\">More info</a></td>
+                                <td><a href=\"product.php?id=".$row['id']."\" class=\"a_info\">Add to your list</a></td>
                             </tr>";
                         
                 }

@@ -36,6 +36,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     <link href="stylesheets/shopping_list.css" rel="stylesheet">
 </head>
 
+
+
+<body>
 <script>
 
     function remove_item(value) {
@@ -70,8 +73,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     }
 
 </script>
-
-<body>
     <header>
         <?php
             include("nav_bar.php");

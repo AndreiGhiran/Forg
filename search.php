@@ -21,7 +21,7 @@ session_start();
        </div>
        <form action="search_process.php" method ="GET" class="radio">
            <div class="search_div">
-                <p class="main_search">Searh food products</p>
+                <p class="main_search">Search food products</p>
 
                 <input type="text" name="name" class="main_textbox" id="recipe_input">
                 <input type="submit" class="submit" value="Search">
@@ -126,7 +126,7 @@ session_start();
                                 }
                             }
                         ?>
-                    </select>
+                    
                 </div>
 
            </div>
