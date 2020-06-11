@@ -148,7 +148,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                 ?>
            
 		    
-           
+           <form action="export_shopping_list.php">
+                <input type="submit" class="submit" value="Export">
+            </form>
        
     </main>
 
